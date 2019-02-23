@@ -16,11 +16,17 @@ void draw() {
     pSist.get(i).run();
     if (pSist.get(i).isOver()) {pSist.remove(i);}    
   }    
-    
+   
+  //saniyede 1 rastgele konumda PS nesnesi oluşturur.
+  if ( int(frameCount % frameRate)==0) {
+    pSist.add(new ParticleSystem(new PVector(random(width) , random(height))));  
+  }
   
   fill(255);
   text("Frame Rate:" + frameRate , 10,20);
-  text("PS Sayısı" + pSist.size() , 10,40);
+  text("Total Frame:" + frameCount , 10,40);
+  
+  text("PS Count:" + pSist.size() , width-80, 20);
   
   
 }
