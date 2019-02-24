@@ -12,18 +12,20 @@ class Particle {
   float lifespan;
   float lifeSpanSpeed;
   float r;
+  color renk;
 
   Particle(PVector l) {
     acceleration = new PVector(0, 0);
-    velocity = new PVector(random(-2, 2), random(-2, 2));
+    velocity = new PVector(random(-5, 5), random(-10, -5));
     position = l.copy();
     lifespan = 255.0;
-    lifeSpanSpeed= random(10, 50);
+    lifeSpanSpeed= random(1, 50);
     r = random(1.0, 5.0);
+    renk=color (random(25,255), random(25,255), random(25,255));
   }
   void applyForce(PVector force) {
-    PVector f = force.copy();    
-    acceleration.y+=force.y;
+    //PVector f = force.copy();    
+    acceleration.add(force);  
   }
 
   void run() {
@@ -43,7 +45,7 @@ class Particle {
   void display() {
     stroke(0, lifespan);
     strokeWeight(2);
-    fill(0, 255, 0, lifespan);    
+    fill(renk, lifespan);    
     ellipse(position.x, position.y, r*2, r*2);
   }
 
