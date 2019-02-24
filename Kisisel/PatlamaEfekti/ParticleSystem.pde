@@ -1,7 +1,7 @@
 class ParticleSystem {
   ArrayList<Particle> particles;
   PVector origin;
-  final int TOTAL=360; 
+  final int TOTAL=100; 
 
   ParticleSystem(PVector position) {
     origin = position.copy();
@@ -17,11 +17,18 @@ class ParticleSystem {
   
   void addParticle(int t) {
     for (int i=0; i<t; i++) {
-      if (i< int(t/2)) {
+      float r=random(1);
+      if (r< 0.3) {
         particles.add(new Particle(origin));
       }
-      else {
+      else if (r<0.5) {
         particles.add(new Confetti(origin));
+      }
+      else if (r<0.8) {
+        particles.add(new Cubuk(origin));
+      }
+      else {
+        particles.add(new Nokta(origin));
       }
     }  
   }
