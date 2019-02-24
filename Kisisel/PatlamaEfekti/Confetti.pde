@@ -15,7 +15,7 @@ class Confetti extends Particle {
   // Override the display method
   void display() {
     rectMode(CENTER);
-    fill(0,200,0,lifespan);
+    fill(renk,lifespan);
     stroke(0,lifespan);
     strokeWeight(2);
     pushMatrix();
