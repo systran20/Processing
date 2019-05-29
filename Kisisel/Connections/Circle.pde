@@ -7,7 +7,7 @@ class Circle{
   Circle(float x_, float y_) {
     x = x_;
     y = y_;
-    r=random(.5 , 2.5);
+    r=1;
     dx = random(-1.5, 1.5);
     dy = random(-1.5, 1.5);
     cons = new ArrayList<Circle>();
