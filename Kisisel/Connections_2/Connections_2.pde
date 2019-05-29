@@ -1,7 +1,7 @@
-
-
-final int ADET=100;
+final int ADET=20;
+final int maxD=350;
 Circle[] circles = new Circle[ADET];
+
 PImage img;
 void setup() {  
   //size(640, 360);
@@ -18,14 +18,16 @@ void draw() {
   for (int i=0; i<circles.length; i++) {
     circles[i].update();
     circles[i].edges();
-    //circles[i].show();  
+    circles[i].show(); 
 
-    for (int j=0; j<circles.length; j++) {
+    for (int j=i; j<circles.length; j++) {
       if (i!=j) {
         float d=dist(circles[i].x, circles[i].y, circles[j].x, circles[j].y);
         color c=int(random(255));
-        if (d<50) {                
-          stroke(50, c, 200, 255-d*5);
+        if (d<maxD) {           
+          float opa=map(d, 0 , maxD, 255, 0 );
+          //stroke(50, c, 200, opa);
+          stroke(255,opa);
           line(circles[i].x, circles[i].y, circles[j].x, circles[j].y);
           
         }
